@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --watch index.js",
     "gitConfig":" git init && git branch -M main && git remote add origin %npm_config_repository%",
-    "git" : "git add . && git commit -m '%node_config_me%' && git push -u origin main"
+    "git" : "git add . && git commit -m '%node_config_me%' && git push -f origin main"
   },
   "author": "Joao Melo <joao.victor.ribeiro.melo@gmail.com>",
   "license": "ISC",
