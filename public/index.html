@@ -5,18 +5,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FS read file</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .main-title {
+            display: flex;
+            width: 100vw;
+            align-items: center;
+            justify-content: center;
+            height: auto;
+            background-color: #7bdbde;
+            padding: .5rem 0;
+            color: white;
+            font-family: 'Noto Sans', sans-serif;
+        }
+
+        .name-title {
+            display: flex;
+            width: 100vw;
+            align-items: center;
+            justify-content: center;
+        }
+        .form{
+            display: flex;
+            width: 100vw;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
-    <h1>
+    <h1 class="main-title">
         File read using FS on Nodejs.
     </h1>
 
-    <h2>
+    <h2 class="name-title">
         Qual o seu nome?
     </h2>
-    <form action="/" method='get'>
-        <input type="text" placeholder="Digite seu nome" name="name"/>
-        <input type="submit" value="Enviar"/>
+    <form action="/" method='get' class="form">
+        <input type="text" placeholder="Digite seu nome" name="name" id="input-text"/>
+        <input type="submit" value="Enviar" id="submit-button"/>
     </form>
 </body>
 </html>
