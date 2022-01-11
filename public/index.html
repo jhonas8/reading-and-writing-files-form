@@ -6,24 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FS read file</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        .main-title {
+
+        body {
+            background-color: #e7ecec;
+        }
+
+        .title {
             display: flex;
-            width: 100vw;
             align-items: center;
             justify-content: center;
-            height: auto;
+            height: 100vh;
+            width: 100vw;
+        }
+        .main-title {
+            display: flex;
+            margin-top: 10px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
             background-color: #7bdbde;
-            padding: .5rem 0;
+            padding: 0 1%;
             color: white;
             font-family: 'Noto Sans', sans-serif;
+            filter: drop-shadow(0 0 0.15rem #73ced1);
+            animation: fadding_icon 4s forwards ease-in-out;
+        }
+
+        .main-title:before {
+            content: '';
+            display: block;
+            padding-top: calc(100% + 2vw);
         }
 
         .name-title {
@@ -31,26 +51,87 @@
             width: 100vw;
             align-items: center;
             justify-content: center;
+            display: none;
         }
-        .form{
+        .form {
             display: flex;
             width: 100vw;
             align-items: center;
             justify-content: center;
+            display: none;
         }
+
+        @keyframes fadding_icon {
+            0% {
+                color: transparent;
+                width: calc(auto/3);
+                transform: rotateZ(-90deg);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: .6;
+                width: calc(auto/2);
+                transform: rotateZ(0);
+            }
+            
+            60% {
+                opacity: .8;
+            }
+
+            75% {
+                opacity: 1;
+                width: auto;
+                color: #ffff;
+            }
+
+            90% {
+                transform: translateX(-10%);
+            }
+
+            98% {
+                opacity: .9;
+            }
+
+            100% {
+
+                transform: translateX(300%);
+                opacity: 0;
+            }
+        }
+
     </style>
 </head>
 <body>
-    <h1 class="main-title">
-        File read using FS on Nodejs.
-    </h1>
+    <div class="title">
+        <h1 class="main-title">
+            WritingFS
+        </h1>
+    </div>
+    <main class="content">
+        <h2 class="name-title">
+            Qual o seu nome?
+        </h2>
+        <form action="/" method='get' class="form">
+            <input type="text" placeholder="Digite seu nome" name="name" id="input-text"/>
+            <input type="submit" value="Enviar" id="submit-button"/>
+        </form>
+    </main>
 
-    <h2 class="name-title">
-        Qual o seu nome?
-    </h2>
-    <form action="/" method='get' class="form">
-        <input type="text" placeholder="Digite seu nome" name="name" id="input-text"/>
-        <input type="submit" value="Enviar" id="submit-button"/>
-    </form>
+    <script>
+
+        removeTitleAfterAnimation()
+
+        function removeTitleAfterAnimation(){
+            const mainTitle = document.querySelector('.main-title')
+
+            mainTitle.getAnimations()
+                .map(animation => animation.finished)[0]
+                .then(()=>{
+                    mainTitle.remove()
+                })
+        }
+
+    </script>
 </body>
 </html>
