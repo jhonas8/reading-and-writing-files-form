@@ -8,6 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -17,6 +20,16 @@
 
         body {
             background-color: #e7ecec;
+        }
+
+        .content { 
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 2.5rem;
+            display: none;
         }
 
         .title {
@@ -51,14 +64,40 @@
             width: 100vw;
             align-items: center;
             justify-content: center;
-            display: none;
+            font-family: 'Poppins', sans-serif;
+            opacity: 0;
+            animation: afterAnimation 1.5s forwards ease-in-out .75s;
         }
+
         .form {
             display: flex;
             width: 100vw;
             align-items: center;
             justify-content: center;
-            display: none;
+            animation: afterAnimation 1.5s forwards ease-in-out;
+        }
+
+        #input-text {
+            border-top-left-radius: 10%;
+            border-bottom-left-radius: 10%;
+            padding: .7em;
+            border: 0;
+        }
+
+        #submit-button:hover {
+            background-color: #c1c5c5;
+            transition: all .3s ease-in;
+        }
+
+        #submit-button {
+            border: 0;
+            border-top-right-radius: 15%;
+            border-bottom-right-radius: 15%;
+            padding: .7em;
+            background-color: #d2d8d8;
+            transition: all .3s ease-out;
+            font-family: 'Poppins', sans-serif;
+            color: #ffff;
         }
 
         @keyframes fadding_icon {
@@ -100,6 +139,18 @@
             }
         }
 
+        @keyframes afterAnimation {
+            0% {
+                transform: translateY(50%);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -110,7 +161,7 @@
     </div>
     <main class="content">
         <h2 class="name-title">
-            Qual o seu nome?
+            Digite o seu nome
         </h2>
         <form action="/" method='get' class="form">
             <input type="text" placeholder="Digite seu nome" name="name" id="input-text"/>
@@ -124,14 +175,19 @@
 
         function removeTitleAfterAnimation(){
             const mainTitle = document.querySelector('.main-title')
+            const content = document.querySelector('.content')
+
+            console.log(content.childNodes)
 
             mainTitle.getAnimations()
                 .map(animation => animation.finished)[0]
                 .then(()=>{
+                    mainTitle.parentElement.remove()
                     mainTitle.remove()
+                    content.style.display = 'flex'
                 })
+                
         }
-
     </script>
 </body>
 </html>
